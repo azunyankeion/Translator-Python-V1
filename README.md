@@ -13,6 +13,11 @@ Primmary Command for a FILE:
 ---------------------------------------------------
 python3 TranslatorCLI.py -f file.extension
 ---------------------------------------------------
+
+
+
+
+
 How to use GUI(Graphical Interface)?
 ---------------------------------------------------
 Simply issue the following command: python3 TranslatorGUI.py
