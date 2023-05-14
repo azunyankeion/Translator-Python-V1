@@ -1,4 +1,11 @@
 # Translator-Python-V1
+
+How to Install?
+
+Run the command: git clone https://github.com/mathmrocha/Translator-Python-V1
+
+
+
 A Simple Translator written in Python, with CLI and GUI, if you are going to make a fork, give the credits. 
 ---------------------------------------------------
 How to use CLI(Command Line)?
