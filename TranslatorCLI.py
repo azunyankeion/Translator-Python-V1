@@ -1,13 +1,14 @@
 import sys
+import tkinter
 import argparse
 from time import sleep
 from googletrans import Translator
 from colorama import Fore, init, AnsiToWin32
 
-
+translator = Translator()
 init=init(wrap=False)
 stream = AnsiToWin32(sys.stderr).stream
-translator = Translator()
+
 
 class Translate:
     def __init__(self) -> None:
@@ -18,16 +19,16 @@ class Translate:
         self.args = self.parser.parse_args()
 
 
-    def print_help(self) -> None:
+    def print_help(self):
         """ 
-            This function prints the help! 
+            # * This function prints the help! 
         """
         self.parser.print_help() 
 
     
-    def translate(self) -> str:
+    def translate(self, translating: any) -> str:
         """ 
-            The principal function to translate phrases in this translator!
+            # * The principal function, translate phrases in this translator!
         """
         while True:
             try:
@@ -40,6 +41,9 @@ class Translate:
 
 
     def ftranslate(self, content: list = list[str]) -> str:
+        """ 
+            # * Function to translate a file!        
+        """
         with open(self.args.filename, 'r', encoding='utf-8') as f:
             try:
                 lang_dest = str(input(Fore.GREEN + 'Enter the language you want to translate, EXAMPLE: EN, PT, ES, JA, zh-tw(Chinese): '))
@@ -56,27 +60,32 @@ class Translate:
                 print(f'{error}')
 
     def __main__(self, validate: list = [0]) -> None:
-        while True:
-            validate = [0]
-            if self.args.text == None:
-                self.args.text = str(self.args.text)
-                self.args.text = ''
-            if self.args.filename == None:
-                self.args.filename = str(self.args.filename)
-                self.args.filename = ''
-            try: 
-                if validate[0] < len(str(self.args.text)) and validate[0] >= len(str(self.args.filename)):
-                    self.translate()
-                    break
-                elif validate[0] >= len(str(self.args.text)) and validate[0] < len(str(self.args.filename)):
-                    self.ftranslate()
-                    break
-                elif validate[0] <= len(str(self.args.filename)) and validate[0] <= len(str(self.args.text)):
+        """ 
+            # * The main function of the Translator!
+        """
+        while True: 
+            validate = [0] # Create a variable, finality is checking if it exists one argument specified!
+            if self.args.text == None: # If self.args.text == None(Null value in C, Java, etc), execute the block below!
+                self.args.text = str(self.args.text) # Transform the variable self.args.text in one string!
+                self.args.text = '' # The new valor for self.args.text
+            elif self.args.filename == None: # If self.args.filename == None(Null value in C, Java, etc), execute the block below!
+                self.args.filename = str(self.args.filename) # Transform the variable self.args.filename in one string!
+                self.args.filename = '' # The new valor for self.args.filename
+            try: #Try execute the block below
+                if validate[0] < len(str(self.args.text)) and validate[0] >= len(str(self.args.filename)): # If 0 is < the letters in self.args.text and 0 >= the letters in self.args.filename execute the block below
+                    self.translate() # Execute the function translate
+                    break #Break the while loop
+                elif validate[0] >= len(str(self.args.text)) and validate[0] < len(str(self.args.filename)): # If 0 is >= the letters in self.args.text and 0 < the letters in self.args.filename execute the block below
+                    self.ftranslate() #Execute the function ftranslate
+                    break #Break the while loop
+                elif validate[0] <= len(str(self.args.filename)) and validate[0] <= len(str(self.args.text)): # If 0 is <= the letters in self.args.filename and 0 <= the letters in self.args.text execute the block of error below
                     print(Fore.GREEN + '\nPLEASE,' + ' ' + Fore.YELLOW + 'ENTER,' + ' ' + Fore.MAGENTA + 'ONLY,' + ' ' + Fore.CYAN + 'ONE,' + ' ' + Fore.LIGHTBLACK_EX + 'ARGUMENT!\n', file=stream)
                     break
             except Exception as error:
                 print(Fore.LIGHTGREEN_EX + f'{error}', file=stream)
                 break
+    
 
 if __name__ == '__main__':
     Translate().__main__()
+    
