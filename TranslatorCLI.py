@@ -65,19 +65,19 @@ class Translate:
         """
         while True: 
             validate = [0] # Create a variable, finality is checking if it exists one argument specified!
-            if self.args.text == None: # If self.args.text == None(Null value in C, Java, etc), execute the block below!
-                self.args.text = str(self.args.text) # Transform the variable self.args.text in one string!
-                self.args.text = '' # The new valor for self.args.text
+            if self.args.text == None:
+                self.args.text = str(self.args.text)
+                self.args.text = ''
             elif self.args.filename == None: # If self.args.filename == None(Null value in C, Java, etc), execute the block below!
-                self.args.filename = str(self.args.filename) # Transform the variable self.args.filename in one string!
-                self.args.filename = '' # The new valor for self.args.filename
-            try: #Try execute the block below
+                self.args.filename = str(self.args.filename) 
+                self.args.filename = ''
+            try:
                 if validate[0] < len(str(self.args.text)) and validate[0] >= len(str(self.args.filename)): # If 0 is < the letters in self.args.text and 0 >= the letters in self.args.filename execute the block below
-                    self.translate() # Execute the function translate
-                    break #Break the while loop
+                    self.translate()
+                    break
                 elif validate[0] >= len(str(self.args.text)) and validate[0] < len(str(self.args.filename)): # If 0 is >= the letters in self.args.text and 0 < the letters in self.args.filename execute the block below
-                    self.ftranslate() #Execute the function ftranslate
-                    break #Break the while loop
+                    self.ftranslate()
+                    break
                 elif validate[0] <= len(str(self.args.filename)) and validate[0] <= len(str(self.args.text)): # If 0 is <= the letters in self.args.filename and 0 <= the letters in self.args.text execute the block of error below
                     print(Fore.GREEN + '\nPLEASE,' + ' ' + Fore.YELLOW + 'ENTER,' + ' ' + Fore.MAGENTA + 'ONLY,' + ' ' + Fore.CYAN + 'ONE,' + ' ' + Fore.LIGHTBLACK_EX + 'ARGUMENT!\n', file=stream)
                     break
@@ -88,4 +88,3 @@ class Translate:
 
 if __name__ == '__main__':
     Translate().__main__()
-    
