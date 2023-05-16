@@ -2,7 +2,7 @@
 
 Linux
 ---------------------------------------------------
-How to Install This Beautiful Work Translator?
+How to Install This Beautiful Translator?
 ---------------------------------------------------
 Run the command: pip3 install googletrans colorama
 ---------------------------------------------------
