@@ -1,9 +1,9 @@
 import sys
-import tkinter
 import argparse
 from time import sleep
 from googletrans import Translator
 from colorama import Fore, init, AnsiToWin32
+
 
 translator = Translator()
 init=init(wrap=False)
