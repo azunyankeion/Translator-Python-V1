@@ -75,7 +75,7 @@ class Translate:
                     print(Fore.GREEN + '\nPLEASE,' + ' ' + Fore.YELLOW + 'ENTER,' + ' ' + Fore.MAGENTA + 'ONLY,' + ' ' + Fore.CYAN + 'ONE,' + ' ' + Fore.LIGHTBLACK_EX + 'ARGUMENT!\n', file=stream)
                     break
             except Exception as error:
-                print(Fore.LIGHTGREEN_EX + f'{error}')
+                print(Fore.LIGHTGREEN_EX + f'{error}', file=stream)
                 break
 
 if __name__ == '__main__':
