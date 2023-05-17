@@ -1,9 +1,12 @@
 import sys
 import argparse
+import platform
+import os
 from time import sleep
 
 from googletrans import Translator
 from colorama import Fore, init, AnsiToWin32
+import psutil
 
 
 translator = Translator()
@@ -28,12 +31,32 @@ class Translate:
         """
         self.parser.print_help()
 
+    
+    def system_info(self) -> str:
+        """ 
+            Print the your system information !
+        """
+        ram_memory = str(round(psutil.virtual_memory().total / (1024.0 **3)))
+        username = os.getlogin()
+        system = platform.system()
+        processor = platform.uname()
+        if system == 'Linux':
+            print(Fore.RED + f'\nThe system is GNU/Linux')
+        elif system == 'Windows':
+                print(Fore.RED + f'\nThe system is Windows')
+        else:
+            system = Fore.RED + f'\nThe system is {platform.system()}'
+            print(system)
+        print(Fore.BLUE + f'Username: {username}')
+        print(Fore.LIGHTCYAN_EX + f'The RAM Memory is {ram_memory} GB')
+        print(Fore.LIGHTBLUE_EX + f'The architecture of the processor is {processor.processor}\n')
+
     def translate(self) -> str:
         """ 
             # * The principal function, translate phrases in this translator!
         """
         while True:
-            lang_dest = str(input(Fore.GREEN + 'Enter the language you want to translate, EXAMPLE: EN, PT, ES, JA, zh-tw(Chinese): '))
+            lang_dest = str(input(Fore.LIGHTMAGENTA_EX + 'Enter the language you want to translate, EXAMPLE: EN, PT, ES, JA, zh-tw(Chinese): '))
             translating = translator.translate(str(self.args.text), dest=lang_dest.lower())
             print(Fore.RED + f'\nORIGINAL -> {translating.origin}\n' + Fore.BLUE + f'TRANSLATED -> {translating.text}\n', file=stream)
             break
@@ -94,4 +117,5 @@ class Translate:
 
 
 if __name__ == '__main__':
+    Translate().system_info()
     Translate().__main__()
