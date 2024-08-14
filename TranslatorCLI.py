@@ -70,7 +70,7 @@ class Translate:
                 lang_dest = str(input(
                     Fore.GREEN + 'Enter the language you want to translate, EXAMPLE: EN, PT, ES, JA, zh-tw(Chinese): '))
                 content = f.readlines()
-                print(Fore.LIGHTRED_EX + "ATTENTION, IF IN YOU ARCHIVE DON'T HAVE ONCE BREAK LINE IN THE LAST LINE OF THE ARCHIVE, THE HYPHENS GOT MESSED UP", file=stream)
+                print(Fore.LIGHTRED_EX + "ATTENTION, IF IN YOUR FILE YOU DON'T HAVE ONCE BREAK LINE IN THE LAST LINE OF THE FILE, THE HYPHENS GOT MESSED UP", file=stream)
                 sleep(2)
             except ValueError:
                 print(Fore.BLACK + 'Please enter a valid file', file=stream)
